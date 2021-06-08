@@ -35,17 +35,13 @@ class Play extends Phaser.Scene {
         // plays background music
         this.music.play();
 
-        // high score
-        // let highScore = 0;
-        // console.log(`${highScore}`);
-
         // place starfield
         this.starfield = this.add.tileSprite(0, 0, game.config.width, 
             game.config.height, 'improvedStarfield').setOrigin(0, 0);
 
-        // green UI background
+        // red UI background
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width,
-            borderUISize * 2, 0x00FF00).setOrigin(0, 0);
+            borderUISize * 2, 0xFF0000).setOrigin(0, 0);
 
         // galaxy-themed boarders
         this.add.tileSprite(0, 0, game.config.width, borderUISize, 'galaxyBorder').setOrigin(0, 0);
@@ -87,10 +83,10 @@ class Play extends Phaser.Scene {
 
         // display score
         let scoreConfig = {
-            fontFamily: 'Courier',
-            fontSize: '28px',
+            fontFamily: 'Oswaldo',
+            fontSize: '30px',
             backgroundColor: '#F3B141',
-            color: '#843605',
+            color: 'blue',
             allign: 'center',
             padding: {
                 top: 5,
