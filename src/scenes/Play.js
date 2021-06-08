@@ -129,11 +129,6 @@ class Play extends Phaser.Scene {
             this.scene.start('menuScene');
         }
 
-        // implement high score when game over
-        // if (gameOver == true) {
-        //     this.highScore = this.p1Score;
-        // }
-
         this.starfield.tilePositionX -= starSpeed;
 
         if(!this.gameOver) {
