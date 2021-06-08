@@ -4,6 +4,8 @@ class Play extends Phaser.Scene {
     }
 
     preload() {
+        // load background music
+        this.load.audio('backgroundMusic', './assets/bensound-endlessmotion.mp3');
         // load images/tile sprites
         this.load.image('rocket', './assets/rocket.png');
         this.load.image('spaceship', './assets/spaceship.png');
@@ -18,6 +20,18 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+        // background music added
+        // Reference: https://www.bensound.com/royalty-free-music/electronica
+        // Name: Endless Motion
+        this.music = this.sound.add('backgroundMusic', {
+            mute: false,
+            volume: .75,
+            rate: 1,
+            loop: true
+        });
+        // plays background music
+        this.music.play();
+
         // high score
         // let highScore = 0;
         // console.log(`${highScore}`);
@@ -105,6 +119,8 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width / 2, game.config.height / 2 + 64, 
                 'PRESS (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
+            // stops teh background music
+            this.music.stop();
 
         }, null, this);
     }
