@@ -4,6 +4,8 @@ class Play extends Phaser.Scene {
     }
 
     preload() {
+        // load image for UI borders
+        this.load.image('galaxyBorder', './assets/galaxyBackground.jpg');
         // load background music
         this.load.audio('backgroundMusic', './assets/bensound-endlessmotion.mp3');
         // load images/tile sprites
@@ -44,15 +46,11 @@ class Play extends Phaser.Scene {
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width,
             borderUISize * 2, 0x00FF00).setOrigin(0, 0);
 
-        // white boarders
-        this.add.rectangle(0, 0, game.config.width, borderUISize, 
-            0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - borderUISize, 
-            game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(0, 0, borderUISize, game.config.height, 
-            0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, 
-            game.config.height, 0xFFFFFF).setOrigin(0, 0);
+        // galaxy-themed boarders
+        this.add.tileSprite(0, 0, game.config.width, borderUISize, 'galaxyBorder').setOrigin(0, 0);
+        this.add.tileSprite(0, game.config.height - borderUISize, game.config.width, borderUISize, 'galaxyBorder').setOrigin(0, 0);
+        this.add.tileSprite(0, 0, borderUISize, game.config.height, 'galaxyBorder').setOrigin(0, 0);
+        this.add.tileSprite(game.config.width - borderUISize, 0, borderUISize, game.config.height, 'galaxyBorder').setOrigin(0, 0);
 
         // add rocket (player 1)
         this.p1Rocket = new Rocket(this, game.config.width / 2, 
