@@ -18,6 +18,10 @@ class Play extends Phaser.Scene {
     }
 
     create() {
+        // high score
+        // let highScore = 0;
+        // console.log(`${highScore}`);
+
         // place starfield
         this.starfield = this.add.tileSprite(0, 0, game.config.width, 
             game.config.height, 'starfield').setOrigin(0, 0);
@@ -74,7 +78,7 @@ class Play extends Phaser.Scene {
             fontSize: '28px',
             backgroundColor: '#F3B141',
             color: '#843605',
-            allign: 'right',
+            allign: 'center',
             padding: {
                 top: 5,
                 bottom: 5
@@ -83,6 +87,12 @@ class Play extends Phaser.Scene {
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, 
             borderUISize + borderPadding * 2, this.p1Score, scoreConfig);
+
+        // 'Fire' UI text
+        this.fireText = this.add.text(game.config.width / 2.5, 
+            borderUISize + borderPadding * 2, 'Fire', scoreConfig);
+        // sets text invisible
+            this.fireText.visible = false;
         
         // GAME OVER flag
         this.gameOver = false;
@@ -107,6 +117,11 @@ class Play extends Phaser.Scene {
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             this.scene.start('menuScene');
         }
+
+        // implement high score when game over
+        // if (gameOver == true) {
+        //     this.highScore = this.p1Score;
+        // }
 
         this.starfield.tilePositionX -= starSpeed;
 
