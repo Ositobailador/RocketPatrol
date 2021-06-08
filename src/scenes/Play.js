@@ -6,12 +6,13 @@ class Play extends Phaser.Scene {
     preload() {
         // load image for UI borders
         this.load.image('galaxyBorder', './assets/galaxyBackground.jpg');
+        // load background image
+        this.load.image('improvedStarfield', './assets/spaceBackground.png');
         // load background music
         this.load.audio('backgroundMusic', './assets/bensound-endlessmotion.mp3');
         // load images/tile sprites
         this.load.image('rocket', './assets/rocket.png');
         this.load.image('spaceship', './assets/spaceship.png');
-        this.load.image('starfield', './assets/starfield.png');
         // load a spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {
             frameWidth: 64,
@@ -40,7 +41,7 @@ class Play extends Phaser.Scene {
 
         // place starfield
         this.starfield = this.add.tileSprite(0, 0, game.config.width, 
-            game.config.height, 'starfield').setOrigin(0, 0);
+            game.config.height, 'improvedStarfield').setOrigin(0, 0);
 
         // green UI background
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width,
